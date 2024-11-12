@@ -13,19 +13,19 @@ The UCI Heart Disease dataset includes 920 individual patient records and 14 key
 **Dataset Link**  
 [UCI Heart Disease Dataset](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data/data)
 
-**Problem Definition**
+## Problem Definition
 
-**Problem**
+### **Problem**
 
 Insights regarding the prediction and the diagnosis of heart disease can be gained  efficiently using Machine Learning models. Conventional diagnostic methods for CVD, such as stress tests and echocardiograms, are often time-consuming and expensive, presenting limitations. 
 
-**Motivation**
+### **Motivation**
 
 Accurate machine learning models for heart disease prediction can assist healthcare providers in making timely decisions and improving patient outcomes. These models could potentially be used to develop automated systems that predict a patient's likelihood of heart disease based on routine health data, enabling preventive care across different regions, including resource constrained areas. 
 
-**Methods**
+### **Methods**
 
-### **EDA (Exploratory Data Analysis)**
+#### **EDA (Exploratory Data Analysis)**
 
 The goal of EDA is to help better understand our data better before beginning to build predictive models or conducting more formal statistical analyses. EDA helps reveal underlying patterns and relationships within the data, like correlations between variables. There was a notable separation between the feature density plots and the distributions of case and control groups across predictive features for cardiovascular disease (CVD). Among these features, thalch (maximum heart rate achieved) showed the most significant difference between case and control groups, with target labels coded as 0 for controls and 1 for cases. After conducting a Wilcoxon Rank-Sum test, a p-value \< 0.05 was yielded for thalch in the training data, suggesting its potential as a strong predictor in both unsupervised and supervised models. This feature, along with others with similar p-values such as age and trestbps, may be valuable for K-means clustering and supervised models such as Logistic Regression and Random Forest. The density distribution below illustrates the distinction between case and control groups for thalch, highlighting its predictive value for heart disease outcomes.
 
@@ -39,19 +39,19 @@ Examining the correlation matrix for select features in our dataset, we observed
 
 ##### Feature Selection
 
-##### The first pre-processing step we took was analyzing the dataset for any attributes we deemed unnecessary for our ML model. We decided to drop two columns, “id”, which identified the unique id for each patient, and “origin”, which cataloged the place of study. We dropped these two columns as neither has much indication of predicting heart disease. 
+The first pre-processing step we took was analyzing the dataset for any attributes we deemed unnecessary for our ML model. We decided to drop two columns, “id”, which identified the unique id for each patient, and “origin”, which cataloged the place of study. We dropped these two columns as neither has much indication of predicting heart disease. 
 
 ![][image3]
 
 ##### Imputation
 
-##### Next, we took a look at the amount of NaN values in our dataset. We decided to drop three columns that exceeded our \<50% NaN value threshold: “Ca”, “thal”, and “slope”. With the remaining features, we decided to impute the NaN values. We used two different imputers based on what kind of data we were working with: KNN Imputer for numerical values and Simple Imputer for categorical values. KNN imputer worked by replacing the NaN values by considering values of the nearest neighbors in the feature space. This takes into account the underlying structure and relationship within the data by leveraging similar data points. This is more contextually relevant than mean/median substitution. Simple Imputer addressed missing values in categorical variables with strategies like “most\_frequent” or “constant”. This ensures that it treats categories as distinct entities without implying any numerical relationship between them. Doing these steps before label encoding ensured that the imputation process respected the categorical nature of the data and avoided numerical associations between columns.
+Next, we took a look at the amount of NaN values in our dataset. We decided to drop three columns that exceeded our \<50% NaN value threshold: “Ca”, “thal”, and “slope”. With the remaining features, we decided to impute the NaN values. We used two different imputers based on what kind of data we were working with: KNN Imputer for numerical values and Simple Imputer for categorical values. KNN imputer worked by replacing the NaN values by considering values of the nearest neighbors in the feature space. This takes into account the underlying structure and relationship within the data by leveraging similar data points. This is more contextually relevant than mean/median substitution. Simple Imputer addressed missing values in categorical variables with strategies like “most\_frequent” or “constant”. This ensures that it treats categories as distinct entities without implying any numerical relationship between them. Doing these steps before label encoding ensured that the imputation process respected the categorical nature of the data and avoided numerical associations between columns.
 
 ![][image4]
 
 ##### Categorical Features Encoding
 
-##### After that, we decided to encode the categorical columns in our dataset. We analyzed two different approaches for doing so: label encoding and one hot encoding. Label encoding will transform the categories into integers. PCA will then interpret this as ordinal and interval data. This creates artificial relationships between categories (which we don’t want), leading to misinterpretation and misleading PCA components. One hot encoding creates a new column for each category with values of 0 and 1 indicating the absence or presence of the category. Since we wanted to use PCA as a later pre-processing step, we decided that one hot encoding is better as it allows PCA to process categorical data without misinterpreting the variance structure.
+After that, we decided to encode the categorical columns in our dataset. We analyzed two different approaches for doing so: label encoding and one hot encoding. Label encoding will transform the categories into integers. PCA will then interpret this as ordinal and interval data. This creates artificial relationships between categories (which we don’t want), leading to misinterpretation and misleading PCA components. One hot encoding creates a new column for each category with values of 0 and 1 indicating the absence or presence of the category. Since we wanted to use PCA as a later pre-processing step, we decided that one hot encoding is better as it allows PCA to process categorical data without misinterpreting the variance structure.
 
 ##### Data Scaling
 
