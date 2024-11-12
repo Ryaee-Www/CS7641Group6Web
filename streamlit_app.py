@@ -94,7 +94,9 @@ We are currently working on implementing Logistic Regression and Random Forest f
 
 The performance of the model on the training data showed a comparable performance to the evaluation on the test dataset. 
 
-**Testing K-means Model on test data![][image9]**  
+**Testing K-means Model on test data**
+            
+**![][image9]**  
 K-means was tested on 20% of the data which the model was not trained on. The performance of on the test data was comparable to performance on the training data, and showed a slight improvement with respect to the silhouette score.
 
 | Silhouette Score | 0.1526  |
