@@ -97,7 +97,7 @@ Outlier detection and handling also differ in their emphasis. For Logistic Regre
 
 ### Data Labeling
 
-	The original dataset had target labels 0, 1, 2, 3, and 4 representing different severities of heart disease (0 being no heart disease and 4 being the most severe). However, due to insufficient data samples for each category, we transformed the target into a binary classification in which 0 indicates “no heart disease” and 1 indicates “has heart disease”. This simplifies the task, addresses class imbalance, and aligns with the goal of identifying the presence of heart disease.
+The original dataset had target labels 0, 1, 2, 3, and 4 representing different severities of heart disease (0 being no heart disease and 4 being the most severe). However, due to insufficient data samples for each category, we transformed the target into a binary classification in which 0 indicates “no heart disease” and 1 indicates “has heart disease”. This simplifies the task, addresses class imbalance, and aligns with the goal of identifying the presence of heart disease.
 
 ## Algorithms
 
